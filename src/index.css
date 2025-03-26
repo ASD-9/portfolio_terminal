@@ -1,0 +1,98 @@
+body {
+  background-color: #1b0523;
+}
+
+.terminal-container {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 600px;
+  margin: 50px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: monospace;
+  background-color: #1E1E1E;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.terminal-body {
+  flex-grow: 1;
+  color: #0F0;
+  padding: 20px;
+}
+
+.input {
+  background: none;
+  border: none;
+  color: limegreen;
+  font-size: 16px;
+  outline: none;
+  width: 100%;
+}
+
+.prompt {
+  color: #0F0;
+  margin-right: 8px;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+}
+
+.terminal-line.system {
+  color: #7CF;
+}
+
+.terminal-line.output {
+  color: #0F0;
+}
+
+.terminal-line.command {
+  color: #FFF;
+}
+
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.terminal-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.terminal-table th, .terminal-table td {
+  border: 1px solid #0F0;
+  padding: 8px;
+  text-align: left;
+}
+
+.terminal-table tbody tr:hover {
+  background-color: rgba(0, 255, 0, 0.2);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  background-color: #333;
+  padding: 8px 16px;
+  height: 20px;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.red { background-color: #FF5F56; }
+.yellow { background-color: #FFBD2E; }
+.green { background-color: #27C93F; }
