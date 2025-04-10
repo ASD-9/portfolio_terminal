@@ -5,9 +5,8 @@ body {
 .terminal-container {
   display: flex;
   flex-direction: column;
-  height: 400px;
-  width: 600px;
-  margin: 50px auto;
+  width: 100%;
+  height: 100%;
   border-radius: 8px;
   overflow: hidden;
   font-family: monospace;
@@ -19,6 +18,7 @@ body {
   flex-grow: 1;
   color: #0F0;
   padding: 20px;
+  cursor: text;
 }
 
 .input {
@@ -80,6 +80,10 @@ pre {
   background-color: #333;
   padding: 8px 16px;
   height: 20px;
+}
+
+.terminal-header:active {
+  cursor: move;
 }
 
 .terminal-buttons {
