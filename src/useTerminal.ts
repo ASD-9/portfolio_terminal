@@ -64,7 +64,10 @@ export const useTerminal = () => {
 
   useEffect(() => {
     if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+      terminalRef.current.scrollTo({
+        top: terminalRef.current.scrollHeight,
+        behavior: "smooth"
+      })
     }
   }, [history]);
 

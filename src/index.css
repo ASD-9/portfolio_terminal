@@ -19,6 +19,7 @@ body {
   color: #0F0;
   padding: 20px;
   cursor: text;
+  overflow-y: auto;
 }
 
 .input {
