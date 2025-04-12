@@ -8,6 +8,8 @@ const Terminal = () => {
     history,
     setHistoryIndex,
     isWaiting,
+    username,
+    companyName,
     inputRef,
     terminalRef,
     handleSubmit,
@@ -33,6 +35,7 @@ const Terminal = () => {
     >
       <div className="terminal-container">
         <div className="terminal-header">
+          <p className="terminal-name">{username}@{companyName}</p>
           <div className="terminal-buttons">
             <div className="button green"></div>
             <div className="button yellow"></div>

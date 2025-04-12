@@ -13,6 +13,9 @@ export const useTerminal = () => {
   const [isWaiting, setIsWaiting] = useState<boolean>(false);
   const [pendingCommand, setPendingCommand] = useState<string>("");
 
+  const [username, setUsername] = useState<string>("Visiteur");
+  const [companyName, setCompanyName] = useState<string>("Portfolio");
+
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
@@ -21,7 +24,13 @@ export const useTerminal = () => {
     const commandName: string = parts[0];
     const args = parts.slice(1).join(" ");
     if (commandName in commands) {
-      return await commands[commandName].action(args, setHistory);
+      const result: string = await commands[commandName].action(args, setHistory);
+      if (username === "Visiteur" && sessionStorage.getItem("isLoggedIn") === "true") {
+        const data = sessionStorage.getItem("userData");
+        setUsername(JSON.parse(data!).username);
+        setCompanyName(JSON.parse(data!).companyName);
+      }
+      return result;
     } else if (commandName === "") {
       return "";
     } else {
@@ -119,6 +128,8 @@ export const useTerminal = () => {
     setCommandHistory,
     setHistoryIndex,
     isWaiting,
+    username,
+    companyName,
     inputRef,
     terminalRef,
     handleSubmit,

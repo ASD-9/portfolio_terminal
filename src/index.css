@@ -81,14 +81,20 @@ pre {
 .terminal-header {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
   background-color: #333;
   padding: 8px 16px;
   height: 20px;
+  cursor: default
 }
 
 .terminal-header:active {
   cursor: move;
+}
+
+.terminal-name {
+  color: #0F0;
+  cursor: inherit;
 }
 
 .terminal-buttons {
