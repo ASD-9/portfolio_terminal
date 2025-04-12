@@ -10,6 +10,8 @@ export const useTerminal = () => {
   ]);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
+  const [isWaiting, setIsWaiting] = useState<boolean>(false);
+  const [pendingCommand, setPendingCommand] = useState<string>("");
 
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -30,13 +32,46 @@ export const useTerminal = () => {
   const handleSubmit = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
     const trimmedInput = input.trim();
+
+    if (isWaiting) {
+      const command: string = pendingCommand + " " + input;
+      const result: HistoryEntry = { text: await processCommand(command), type: "output" };
+      if (result.text) {
+        setHistory(prev => [...prev, result]);
+      }
+      setIsWaiting(false);
+      setPendingCommand("");
+      setInput("");
+      return;
+    }
+
     if (trimmedInput) {
       setCommandHistory(prev => [...prev, trimmedInput]);
       setHistoryIndex(-1);
     }
+
     const newEntry: HistoryEntry = { text: `$ ${input}`, type: "command" }; 
+    setHistory(prev => [...prev, newEntry]);
+
+    const parts = trimmedInput.split(" ");
+    const commandName: string = parts[0];
+    const args = parts.slice(1);
+
+    if (commandName === "login") {
+      if (args.length !== 1) {
+        setHistory(prev => [...prev, { text: "❗Utilisation : login <username>", type: "output" }]);
+      } else {
+        setIsWaiting(true);
+        setPendingCommand(input);
+      }
+      setInput("");
+      return;
+    }
+
     const result: HistoryEntry = { text: await processCommand(input), type: "output" };
-    setHistory(prev => [...prev, newEntry, ...(result.text ? [result] : [])]);
+    if (result.text) {
+      setHistory(prev => [...prev, result]);
+    }
     setInput("");
   }
 
@@ -83,6 +118,7 @@ export const useTerminal = () => {
     history,
     setCommandHistory,
     setHistoryIndex,
+    isWaiting,
     inputRef,
     terminalRef,
     handleSubmit,

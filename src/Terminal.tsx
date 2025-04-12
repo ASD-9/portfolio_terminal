@@ -7,6 +7,7 @@ const Terminal = () => {
     setInput,
     history,
     setHistoryIndex,
+    isWaiting,
     inputRef,
     terminalRef,
     handleSubmit,
@@ -47,11 +48,14 @@ const Terminal = () => {
             </div>
           ))}
           <form onSubmit={handleSubmit} className="terminal-input-line">
-            <span className="prompt">$</span>
+            { !isWaiting
+              ? <span className="prompt">$</span>
+              : <span className="prompt">🔐</span>
+            }
             <input
               ref={inputRef}
-              className="input"
-              type="text"
+              className={`input ${isWaiting ? "password" : ""}`}
+              type={isWaiting ? "password" : "text"}
               value={input}
               onChange={(e) => {
                 setInput(e.target.value);
