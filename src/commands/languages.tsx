@@ -3,7 +3,7 @@ import { Command, Language } from "../types";
 const languages: Command = {
   name: "languages",
   args: [],
-  description: "Liste de mes compétences.",
+  description: "Liste des langues que je maîtrise.",
   action: async () => {
     try {
       const API_URL = import.meta.env.VITE_PERSONAL_API_URL;
