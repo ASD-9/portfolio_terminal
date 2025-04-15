@@ -26,7 +26,7 @@ const Terminal = () => {
         width: 600,
         height: 400,
       }}
-      dragHandleClassName="terminal-header"
+      dragHandleClassName="header"
       minWidth={500}
       minHeight={300}
       maxWidth={window.innerWidth}
@@ -34,9 +34,9 @@ const Terminal = () => {
       bounds="window"
     >
       <div className="terminal-container">
-        <div className="terminal-header">
-          <p className="terminal-name">{username}@{companyName}</p>
-          <div className="terminal-buttons">
+        <div className="header">
+          <p className="header-title">{username}@{companyName}</p>
+          <div className="buttons">
             <div className="button green"></div>
             <div className="button yellow"></div>
             <div className="button red"></div>

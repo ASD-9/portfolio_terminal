@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect, FormEvent, KeyboardEvent, JSX } from "react";
+import { useState, useRef, useEffect, FormEvent, KeyboardEvent, JSX, useContext } from "react";
 import { HistoryEntry } from "./types";
 import commands from "./commands";
+import { ProjectsContext } from "./ProjectsContext";
 
 export const useTerminal = () => {
   const [input, setInput] = useState<string>("");
@@ -16,6 +17,8 @@ export const useTerminal = () => {
   const [username, setUsername] = useState<string>("Visiteur");
   const [companyName, setCompanyName] = useState<string>("Portfolio");
 
+  const { setProjects } = useContext(ProjectsContext);
+
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
@@ -24,7 +27,7 @@ export const useTerminal = () => {
     const commandName: string = parts[0];
     const args = parts.slice(1).join(" ");
     if (commandName in commands) {
-      const result: string | JSX.Element = await commands[commandName].action(args, setHistory);
+      const result: string | JSX.Element = await commands[commandName].action(args, setHistory, setProjects);
       if (username === "Visiteur" && sessionStorage.getItem("isLoggedIn") === "true") {
         const data = sessionStorage.getItem("userData");
         setUsername(JSON.parse(data!).username);

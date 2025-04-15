@@ -85,7 +85,7 @@ pre {
   background-color: rgba(0, 255, 0, 0.2);
 }
 
-.terminal-header {
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -95,16 +95,16 @@ pre {
   cursor: default
 }
 
-.terminal-header:active {
+.header:active {
   cursor: move;
 }
 
-.terminal-name {
+.header-title {
   color: #0F0;
   cursor: inherit;
 }
 
-.terminal-buttons {
+.buttons {
   display: flex;
   gap: 8px;
 }
@@ -121,4 +121,86 @@ pre {
 
 hr {
   color: #FFF;
+}
+
+.phone-container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  padding: 20px;
+}
+
+.phone-body {
+  position: relative;
+  width: 360px;
+  height: 780px;
+  background-color: #2d3748;
+  border-radius: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.phone-screen {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  background-color: #000;
+  border-radius: 26px;
+  overflow: hidden;
+}
+
+.status-bar {
+  height: 24px;
+  box-sizing: border-box;
+  background-color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 16px;
+  color: white;
+  font-size: 12px;
+}
+
+.status-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.camera-cutout {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #000;
+  border: 1px solid #555;
+  z-index: 10;
+}
+
+.camera-lens {
+  width: 4px;
+  height: 4px;
+  margin: 1px;
+  border-radius: 50%;
+  background-color: #444;
+}
+
+.content-area {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.content-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }

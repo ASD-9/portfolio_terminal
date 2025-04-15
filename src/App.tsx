@@ -1,8 +1,13 @@
+import { ProjectsProvider } from "./ProjectsContext"
+import ProjectsList from "./ProjectsList"
 import Terminal from "./Terminal"
 
 function App() {
   return (
-    <Terminal />
+    <ProjectsProvider>
+      <Terminal />
+      <ProjectsList />
+    </ProjectsProvider>
   )
 }
 
