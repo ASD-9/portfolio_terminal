@@ -3,7 +3,7 @@ import { Command } from "../types";
 const skills: Command = {
   name: "skills",
   args: [],
-  description: "Mes informations de contact.",
+  description: "Liste de mes compétences.",
   action: async () => {
     try {
       const API_URL = import.meta.env.VITE_PERSONAL_API_URL;
