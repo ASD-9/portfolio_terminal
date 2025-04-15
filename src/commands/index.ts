@@ -8,6 +8,7 @@ import skills from "./skills";
 import languages from "./languages";
 import experiences from "./experiences";
 import education from "./education";
+import github from "./github";
 import login from "./login";
 import whoami from "./whoami";
 import why from "./why";
@@ -20,6 +21,7 @@ const commands: CommandMap = {
   languages,
   experiences,
   education,
+  github,
   login,
   whoami,
   why
