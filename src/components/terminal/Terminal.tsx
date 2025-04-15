@@ -1,5 +1,7 @@
 import { Rnd } from "react-rnd";
 import { useTerminal } from "./useTerminal";
+import Header from "../header/Header";
+import "./Terminal.css";
 
 const Terminal = () => {
   const {
@@ -34,14 +36,7 @@ const Terminal = () => {
       bounds="window"
     >
       <div className="terminal-container">
-        <div className="header">
-          <p className="header-title">{username}@{companyName}</p>
-          <div className="buttons">
-            <div className="button green"></div>
-            <div className="button yellow"></div>
-            <div className="button red"></div>
-          </div>
-        </div>
+        <Header title={`${username}@${companyName}`} />
 
         <div ref={terminalRef} onClick={focusInput} className="terminal-body">
           <p>Portfolio Terminal</p>

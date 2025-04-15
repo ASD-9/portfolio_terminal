@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, FormEvent, KeyboardEvent, JSX, useContext } from "react";
-import { HistoryEntry } from "./types";
-import commands from "./commands";
-import { ProjectsContext } from "./ProjectsContext";
+import { HistoryEntry } from "../../types";
+import commands from "../../commands";
+import { ProjectsContext } from "../../context/ProjectsContext";
 
 export const useTerminal = () => {
   const [input, setInput] = useState<string>("");

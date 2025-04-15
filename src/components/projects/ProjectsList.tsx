@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Smartphone from "./Smartphone";
-import { Project } from "./types";
-import { ProjectsContext } from "./ProjectsContext";
+import { Project } from "../../types";
+import { ProjectsContext } from "../../context/ProjectsContext";
 
 const ProjectsList = () => {
   const { projects } = useContext(ProjectsContext);

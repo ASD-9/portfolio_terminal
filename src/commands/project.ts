@@ -21,7 +21,7 @@ const project: Command = {
       setProjects(prev => [...prev, data.data]);
       return "Projet ouvert.";
     } catch {
-      return "Une erreur est survenur, veuillez réessayer.";
+      return "Une erreur est survenue, veuillez réessayer.";
     }
   },
 }
