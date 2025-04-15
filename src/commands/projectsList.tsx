@@ -18,9 +18,6 @@ const projectsList: Command = {
             <div>
               <p>{project.id} - {project.title}</p>
               <p>{project.description}</p>
-              {/* {project.technologies.map((tech: string) => (
-                <p>- {tech}</p>
-              ))} */}
               <p>Stack: {project.technologies.join(", ")}</p>
               {index !== data.data.length - 1 && <hr />}
             </div>
