@@ -69,7 +69,7 @@ pre {
   border-collapse: collapse;
 }
 
-.terminal-table td {
+.terminal-table td, .terminal-table th {
   border: 1px solid #0F0;
   padding: 8px;
   text-align: left;

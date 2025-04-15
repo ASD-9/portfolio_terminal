@@ -5,6 +5,7 @@ import help from "./help";
 import about from "./about";
 import contact from "./contact";
 import skills from "./skills";
+import languages from "./languages";
 import login from "./login";
 import whoami from "./whoami";
 import why from "./why";
@@ -14,6 +15,7 @@ const commands: CommandMap = {
   about,
   contact,
   skills,
+  languages,
   login,
   whoami,
   why

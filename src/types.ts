@@ -18,7 +18,8 @@ export type HistoryEntry = {
   type: 'system' | 'command' | 'output';
 }
 
-export type Data = {
-  id: number;
-  name: string;
+export type Language = {
+  language: string;
+  level: string;
+  comment: string;
 }
