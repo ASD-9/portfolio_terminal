@@ -1,6 +1,10 @@
 import { JSX } from "react";
 
-export type CommandFunction = (args: string, setHistory: React.Dispatch<React.SetStateAction<HistoryEntry[]>>) => string | Promise<string | JSX.Element> | JSX.Element;
+export type CommandFunction = (
+  args: string,
+  setHistory: React.Dispatch<React.SetStateAction<HistoryEntry[]>>,
+  setProjects: React.Dispatch<React.SetStateAction<Project[]>>
+) => string | Promise<string | JSX.Element> | JSX.Element;
 
 export type Command = {
   name: string;

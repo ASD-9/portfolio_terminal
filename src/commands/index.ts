@@ -10,6 +10,7 @@ import experiences from "./experiences";
 import education from "./education";
 import github from "./github";
 import projectsList from "./projectsList";
+import project from "./project";
 import login from "./login";
 import whoami from "./whoami";
 import why from "./why";
@@ -24,6 +25,7 @@ const commands: CommandMap = {
   education,
   github,
   "projects-list": projectsList,
+  project,
   login,
   whoami,
   why
