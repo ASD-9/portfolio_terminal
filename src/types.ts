@@ -32,3 +32,12 @@ export type Experience = {
   endDate: string;
   details: string[];
 }
+
+export type Education = {
+  title: string;
+  school: string;
+  place: string;
+  startDate: string;
+  endDate: string;
+  details: string[];
+}
