@@ -3,7 +3,7 @@ import { Command } from "../types";
 const login: Command = ({
   name: "login",
   args: ["[username]"],
-  description: "🔐 Se connecter pour accéder à toutes les commandes.",
+  description: "Se connecter pour accéder à toutes les commandes.",
   action: async (args: string) => {
     const username = args.split(" ")[0];
     const password = args.split(" ")[1];
@@ -26,7 +26,7 @@ const login: Command = ({
       }
       return data.message;
     } catch {
-      return "❌ Échec de la connexion. Veuillez réessayer.";
+      return "Échec de la connexion. Veuillez réessayer.";
     }
   }
 });

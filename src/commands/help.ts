@@ -3,7 +3,7 @@ import { Command, CommandMap } from "../types";
 const help = (commands: CommandMap): Command => ({
   name: "help",
   args: [],
-  description: "📚 Liste de toutes les commandes.",
+  description: "Liste de toutes les commandes.",
   action: () => {
     return [
       "Commandes disponibles:",

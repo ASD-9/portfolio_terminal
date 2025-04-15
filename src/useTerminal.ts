@@ -68,7 +68,7 @@ export const useTerminal = () => {
 
     if (commandName === "login") {
       if (args.length !== 1) {
-        setHistory(prev => [...prev, { text: "❗Utilisation : login <username>", type: "output" }]);
+        setHistory(prev => [...prev, { text: "Utilisation : login <username>", type: "output" }]);
       } else {
         setIsWaiting(true);
         setPendingCommand(input);
