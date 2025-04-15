@@ -41,3 +41,11 @@ export type Education = {
   endDate: string;
   details: string[];
 }
+
+export type Project = {
+  id: number;
+  title: string;
+  description: string;
+  technologies: string[];
+  url: string;
+}
