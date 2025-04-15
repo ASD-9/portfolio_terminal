@@ -2,17 +2,18 @@ import { ReactNode } from "react";
 import { Rnd } from "react-rnd";
 import "./Smartphone.css";
 import Header from "../header/Header";
+import { Project } from "../../types";
 
 type SmartphoneProps = {
   children: ReactNode;
-  projectTitle: string;
+  project: Project
 };
 
-const Smartphone = ({ children, projectTitle }: SmartphoneProps) => {
+const Smartphone = ({ children, project }: SmartphoneProps) => {
   return (
     <Rnd dragHandleClassName="header" enableResizing={false}>
       <div className="phone-container">
-          <Header title={projectTitle}></Header>
+          <Header title={project.title} projectId={project.id}></Header>
           
           <div className="phone-body">
               <div className="phone-screen">

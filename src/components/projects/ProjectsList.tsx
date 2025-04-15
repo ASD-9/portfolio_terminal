@@ -9,7 +9,7 @@ const ProjectsList = () => {
   return (
     <div>
       {projects.map((project: Project) => (
-        <Smartphone key={project.id} projectTitle={project.title}>
+        <Smartphone key={project.id} project={project}>
           <iframe
             src={project.url}
             title={project.title}
