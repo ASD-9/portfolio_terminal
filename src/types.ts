@@ -23,3 +23,12 @@ export type Language = {
   level: string;
   comment: string;
 }
+
+export type Experience = {
+  title: string;
+  company: string;
+  place: string
+  startDate: string;
+  endDate: string;
+  details: string[];
+}

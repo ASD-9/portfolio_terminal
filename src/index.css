@@ -118,3 +118,7 @@ pre {
 .red { background-color: #FF5F56; }
 .yellow { background-color: #FFBD2E; }
 .green { background-color: #27C93F; }
+
+hr {
+  color: #FFF;
+}
