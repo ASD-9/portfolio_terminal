@@ -5,7 +5,6 @@ const project: Command = {
   args: ["[id]"],
   description: "Ouvre une démo du projet [id].",
   action: async (args: string, __, setProjects) => {
-    // setHistory([]);
     try {
       const arg = args.split(" ")[0];
       if (!parseInt(arg)) {
