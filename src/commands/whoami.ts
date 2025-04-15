@@ -3,7 +3,7 @@ import { Command } from "../types";
 const whoami: Command = {
   name: "whoami",
   args: [],
-  description: "Qui suis-je ? [Connexion requise]",
+  description: "Qui est connecté ? [Connexion requise]",
   action: () => {
     const data = sessionStorage.getItem("userData");
     if (data) {
