@@ -68,13 +68,19 @@ pre {
   border-collapse: collapse;
 }
 
-.terminal-table th, .terminal-table td {
+.terminal-table td {
   border: 1px solid #0F0;
   padding: 8px;
   text-align: left;
 }
 
-.terminal-table tbody tr:hover {
+.terminal-table a {
+  color: inherit;
+  text-decoration: none;
+  display: contents
+}
+
+.terminal-table-link:hover {
   background-color: rgba(0, 255, 0, 0.2);
 }
 

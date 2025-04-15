@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, FormEvent, KeyboardEvent } from "react";
+import { useState, useRef, useEffect, FormEvent, KeyboardEvent, JSX } from "react";
 import { HistoryEntry } from "./types";
 import commands from "./commands";
 
@@ -19,12 +19,12 @@ export const useTerminal = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
-  const processCommand = async (command: string): Promise<string> => {
+  const processCommand = async (command: string): Promise<string | JSX.Element> => {
     const parts = command.trim().split(" ");
     const commandName: string = parts[0];
     const args = parts.slice(1).join(" ");
     if (commandName in commands) {
-      const result: string = await commands[commandName].action(args, setHistory);
+      const result: string | JSX.Element = await commands[commandName].action(args, setHistory);
       if (username === "Visiteur" && sessionStorage.getItem("isLoggedIn") === "true") {
         const data = sessionStorage.getItem("userData");
         setUsername(JSON.parse(data!).username);

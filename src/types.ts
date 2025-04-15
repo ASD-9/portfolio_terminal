@@ -1,4 +1,6 @@
-export type CommandFunction = (args: string, setHistory: React.Dispatch<React.SetStateAction<HistoryEntry[]>>) => string | Promise<string>;
+import { JSX } from "react";
+
+export type CommandFunction = (args: string, setHistory: React.Dispatch<React.SetStateAction<HistoryEntry[]>>) => string | Promise<string | JSX.Element> | JSX.Element;
 
 export type Command = {
   name: string;
@@ -12,7 +14,7 @@ export type CommandMap = {
 }
 
 export type HistoryEntry = {
-  text: string;
+  text: string | JSX.Element;
   type: 'system' | 'command' | 'output';
 }
 
