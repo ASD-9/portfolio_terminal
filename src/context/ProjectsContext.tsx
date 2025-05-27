@@ -1,5 +1,5 @@
 import { createContext, useState, ReactNode } from "react";
-import { Project } from "./types";
+import { Project } from "../types";
 
 type ProjectsContextType = {
   projects: Project[];
