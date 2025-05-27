@@ -11,7 +11,7 @@ type SmartphoneProps = {
 
 const Smartphone = ({ children, project }: SmartphoneProps) => {
   return (
-    <Rnd dragHandleClassName="header" enableResizing={false}>
+    <Rnd dragHandleClassName="header" enableResizing={false} bounds="window">
       <div className="phone-container">
           <Header title={project.title} projectId={project.id}></Header>
           
