@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect, FormEvent, KeyboardEvent } from "react";
-import { HistoryEntry } from "./types";
-import commands from "./commands";
+import { useState, useRef, useEffect, FormEvent, KeyboardEvent, JSX, useContext } from "react";
+import { HistoryEntry } from "../../types";
+import commands from "../../commands";
+import { ProjectsContext } from "../../context/ProjectsContext";
 
 export const useTerminal = () => {
   const [input, setInput] = useState<string>("");
@@ -10,16 +11,29 @@ export const useTerminal = () => {
   ]);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
+  const [isWaiting, setIsWaiting] = useState<boolean>(false);
+  const [pendingCommand, setPendingCommand] = useState<string>("");
+
+  const [username, setUsername] = useState<string>("Visiteur");
+  const [companyName, setCompanyName] = useState<string>("Portfolio");
+
+  const { setProjects } = useContext(ProjectsContext);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
-  const processCommand = async (command: string): Promise<string> => {
+  const processCommand = async (command: string): Promise<string | JSX.Element> => {
     const parts = command.trim().split(" ");
     const commandName: string = parts[0];
     const args = parts.slice(1).join(" ");
     if (commandName in commands) {
-      return await commands[commandName].action(args, setHistory);
+      const result: string | JSX.Element = await commands[commandName].action(args, setHistory, setProjects);
+      if (username === "Visiteur" && sessionStorage.getItem("isLoggedIn") === "true") {
+        const data = sessionStorage.getItem("userData");
+        setUsername(JSON.parse(data!).username);
+        setCompanyName(JSON.parse(data!).companyName);
+      }
+      return result;
     } else if (commandName === "") {
       return "";
     } else {
@@ -30,13 +44,46 @@ export const useTerminal = () => {
   const handleSubmit = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
     const trimmedInput = input.trim();
+
+    if (isWaiting) {
+      const command: string = pendingCommand + " " + input;
+      const result: HistoryEntry = { text: await processCommand(command), type: "output" };
+      if (result.text) {
+        setHistory(prev => [...prev, result]);
+      }
+      setIsWaiting(false);
+      setPendingCommand("");
+      setInput("");
+      return;
+    }
+
     if (trimmedInput) {
       setCommandHistory(prev => [...prev, trimmedInput]);
       setHistoryIndex(-1);
     }
+
     const newEntry: HistoryEntry = { text: `$ ${input}`, type: "command" }; 
+    setHistory(prev => [...prev, newEntry]);
+
+    const parts = trimmedInput.split(" ");
+    const commandName: string = parts[0];
+    const args = parts.slice(1);
+
+    if (commandName === "login") {
+      if (args.length !== 1) {
+        setHistory(prev => [...prev, { text: "Utilisation : login <username>", type: "output" }]);
+      } else {
+        setIsWaiting(true);
+        setPendingCommand(input);
+      }
+      setInput("");
+      return;
+    }
+
     const result: HistoryEntry = { text: await processCommand(input), type: "output" };
-    setHistory(prev => [...prev, newEntry, ...(result.text ? [result] : [])]);
+    if (result.text) {
+      setHistory(prev => [...prev, result]);
+    }
     setInput("");
   }
 
@@ -64,7 +111,10 @@ export const useTerminal = () => {
 
   useEffect(() => {
     if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+      terminalRef.current.scrollTo({
+        top: terminalRef.current.scrollHeight,
+        behavior: "smooth"
+      })
     }
   }, [history]);
 
@@ -80,6 +130,9 @@ export const useTerminal = () => {
     history,
     setCommandHistory,
     setHistoryIndex,
+    isWaiting,
+    username,
+    companyName,
     inputRef,
     terminalRef,
     handleSubmit,

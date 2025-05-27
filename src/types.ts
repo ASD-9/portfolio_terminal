@@ -1,4 +1,10 @@
-export type CommandFunction = (args: string, setHistory: React.Dispatch<React.SetStateAction<HistoryEntry[]>>) => string | Promise<string>;
+import { JSX } from "react";
+
+export type CommandFunction = (
+  args: string,
+  setHistory: React.Dispatch<React.SetStateAction<HistoryEntry[]>>,
+  setProjects: React.Dispatch<React.SetStateAction<Project[]>>
+) => string | Promise<string | JSX.Element> | JSX.Element;
 
 export type Command = {
   name: string;
@@ -12,11 +18,38 @@ export type CommandMap = {
 }
 
 export type HistoryEntry = {
-  text: string;
+  text: string | JSX.Element;
   type: 'system' | 'command' | 'output';
 }
 
-export type Data = {
+export type Language = {
+  language: string;
+  level: string;
+  comment: string;
+}
+
+export type Experience = {
+  title: string;
+  company: string;
+  place: string
+  startDate: string;
+  endDate: string;
+  details: string[];
+}
+
+export type Education = {
+  title: string;
+  school: string;
+  place: string;
+  startDate: string;
+  endDate: string;
+  details: string[];
+}
+
+export type Project = {
   id: number;
-  name: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  url: string;
 }

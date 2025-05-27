@@ -1,0 +1,86 @@
+.terminal-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: monospace;
+  background-color: #1E1E1E;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.terminal-body {
+  flex-grow: 1;
+  color: #0F0;
+  padding: 20px;
+  cursor: text;
+  overflow-y: auto;
+}
+
+.input {
+  background: none;
+  border: none;
+  color: limegreen;
+  font-size: 16px;
+  outline: none;
+  width: 100%;
+}
+
+.input.password {
+  color: transparent;
+}
+
+.prompt {
+  color: #0F0;
+  margin-right: 8px;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+}
+
+.terminal-line.system {
+  color: #7CF;
+}
+
+.terminal-line.output {
+  color: #0F0;
+}
+
+.terminal-line.command {
+  color: #FFF;
+}
+
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: normal;
+  overflow-wrap: break-word; 
+}
+
+.terminal-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.terminal-table td, .terminal-table th {
+  border: 1px solid #0F0;
+  padding: 8px;
+  text-align: left;
+}
+
+.terminal-table a {
+  color: inherit;
+  text-decoration: none;
+  display: contents
+}
+
+.terminal-table-link:hover {
+  background-color: rgba(0, 255, 0, 0.2);
+}
+
+hr {
+  color: #FFF;
+}

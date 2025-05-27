@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 8px 16px;
+  height: 20px;
+  cursor: default
+}
+
+.header:active {
+  cursor: move;
+}
+
+.header-title {
+  color: #0F0;
+  cursor: inherit;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.red { background-color: #FF5F56; }
+.yellow { background-color: #FFBD2E; }
+.green { background-color: #27C93F; }
+
+.pointer {
+  cursor: pointer
+}
