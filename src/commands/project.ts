@@ -18,12 +18,15 @@ const project: Command = {
       } else if (response.status != 200) {
         return "Problème interne au serveur, réessayez plus tard.";
       }
-      setProjects(prev => [...prev, data.data]);
+      if (data.data["status"] == "inProgress") {
+        return "Le projet est encore en cours de développement.";
+      }
+      setProjects((prev) => [...prev, data.data]);
       return "Projet ouvert.";
     } catch {
       return "Une erreur est survenue, veuillez réessayer.";
     }
   },
-}
+};
 
 export default project;
